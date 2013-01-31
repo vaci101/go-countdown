@@ -1,15 +1,45 @@
 <?php
+/*********************************************************************************************************************\
+* LAST UPDATE
+* ============
+* January 31, 2013
+*
+*
+* AUTHOR
+* =============
+* Copyright 2013 Giga Omni Media (GigaOM.com)
+* 
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+*  at your option) any later version.
 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+* 
+* FOR DOCUMENTATION VISIT https://github.com/fergbrain/countdown-timer.git
+*
+*
+* PURPOSE
+* =============
+* Create a simple countdown timer utilizing a shortcode. This timer will only output the number of days until an event. 
+* Additional updates must be performed to activate the other time segment
+*
+*
+* SHORTCODE USAGE
+* =============
+* [go_countdown date='2013-03-01 08:00']
+*
+*
+\*********************************************************************************************************************/
 class GO_Countdown
 {
-	public $years;
-	public $months;
-	public $days;
-	public $hours;
-	public $minutes;
-	public $seconds;
-	
-		//Per instance
+	//Per instance
 	private $event_list;
 	private $eventsPresent;
 	private $jsUID = array();
@@ -53,8 +83,8 @@ class GO_Countdown
 		//enqueue countdown timer js
 		wp_register_script('go-countdown-timer', plugins_url(dirname(plugin_basename(__FILE__)) . "/js/". 'go-countdown-timer.js'), array('jquery'), 4 );
 		wp_enqueue_script( 'go-countdown-timer');
-		wp_register_script('webkit-sprintf', plugins_url(dirname(plugin_basename(__FILE__)) . "/js/" . 'webtoolkit.sprintf.js'),  array('jquery'), 3);
-		wp_enqueue_script( 'webkit-sprintf');
+		//wp_register_script('webkit-sprintf', plugins_url(dirname(plugin_basename(__FILE__)) . "/js/" . 'webtoolkit.sprintf.js'),  array('jquery'), 3);
+		//wp_enqueue_script( 'webkit-sprintf');
 	}
 
 	/**
@@ -100,7 +130,7 @@ class GO_Countdown
 	function process_date ( $target_time, $now_time ) 
 	{
 			
-		$time_delta = new get_delta_time( $target_time, $now_time );
+		$time_delta = new GO_Getdelta( $target_time, $now_time );
 
 		$rollover = 0;
 		$output = '';
@@ -285,56 +315,3 @@ class GO_Countdown
 	}
 	
 } // end class
-
-class get_delta_time{
-		
-	public $now_year;
-	public $now_month;
-	public $now_day;
-	public $now_hour ;
-	public $now_minute;
-	public $now_second;
-	
-	public $target_year;
-	public $target_month;
-	public $target_day;
-	public $target_hour ;
-	public $target_minute;
-	public $target_second;
-	
-	public $year;
-	public $minute;
-	public $day;
-	public $hour;
-	public $iminute;
-	public $seconds;
-	
-	public $week;
-	
-	public $delta;
-	
-	public function __construct($target_time, $now_time){
-		$this->now_year = date("Y", $now_time);
-		$this->now_month = date("m", $now_time);
-		$this->now_day = date("d", $now_time);
-		$this->now_hour = date("H", $now_time);
-		$this->now_minute = date("i", $now_time);
-		$this->now_second = date("s", $now_time);
-		
-		$this->target_year = date("Y", $target_time);
-		$this->target_month = date("m", $target_time);
-		$this->target_day = date("d", $target_time);
-		$this->target_hour = date("H", $target_time);
-		$this->target_minute = date("i", $target_time);
-		$this->target_second = date("s", $target_time);
-		
-		$this->year = $this->target_year - $this->now_year;
-		$this->month  = $this->target_month - $this->now_month;
-		$this->day = $this->target_day - $this->now_day;
-		$this->hour  = $this->target_hour - $this->now_hour;
-		$this->iminute = $this->target_minute - $this->now_minute;
-		$this->seconds = $this->target_second - $this->now_second;
-		
-		$this->delta = $target_time - $now_time;
-	}
-}
