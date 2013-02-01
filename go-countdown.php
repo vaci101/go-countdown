@@ -25,8 +25,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 require __DIR__ . '/components/class-go-countdown.php';
-require __DIR__ . '/components/class-go-getdelta.php';
 require __DIR__ . '/components/config/go-countdown.php';
 
 global $go_countdown;
