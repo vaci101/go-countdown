@@ -18,9 +18,8 @@ To use the shortcode [go_countdown date = '2013-03-01 08:00' ]
 == Installation ==
 
 1. Download the plugin and unzip it into wp-content/plugins.
-2. Activate the plugin by going to Plugins and choosing Activate.
-3. Plugin is not active.
-4. Go to your post and add your shortcode. Shortcode examples follow.
+2. Activate the plugin by going to Plugins and choose Activate.
+3. Go to your post and add your shortcode. Shortcode examples follow.
 
 == Shortcode Usage ==
 
