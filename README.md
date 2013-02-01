@@ -25,18 +25,18 @@ To use the shortcode [go_countdown date = '2013-03-01 08:00' ]
 == Shortcode Usage ==
 
 Default shortcode usage:
-	[go_countdown date='2013-03-15 08:00'] - ( replace with the date of your upcoming event )
+1. [go_countdown date='2013-03-15 08:00'] - ( replace with the date of your upcoming event )
+
 
 
 There are several parameters you can pass to this shortode. 
-date 		- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes 
-            		( 24 hour format instead of 12 hour ) - REQUIRED
 
-timezone	-	need to include a time zone identifier ( i.e. America/Los_Angeles )
-			- see http://www.iana.org/time-zones.  If no timezone is entered, the default will 
-			  be America/Los_Angeles.
 
-display		-	pass the time elements you would like to display on your site. These time elements
+1. date 	- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes 
+			( 24 hour format instead of 12 hour ) - REQUIRED
+2. timezone	-	need to include a time zone identifier ( i.e. America/Los_Angeles )
+			see http://www.iana.org/time-zones.  If no timezone is entered, the default will be America/Los_Angeles.
+3. display	-	pass the time elements you would like to display on your site. These time elements
 			must be comma delimited if displaying multiple time elements.  If no display is entered,
 			the default will be 'years,months,days,hours,minutes,seconds'.
 			For Ex:	if you only want to display the "hours" pass hours ONLY
