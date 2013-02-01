@@ -26,11 +26,9 @@ To use the shortcode [go_countdown date = '2013-03-01 08:00' ]
 
 Default shortcode usage:
 1. [go_countdown date='2013-03-15 08:00'] - ( replace with the date of your upcoming event )
-
-
+2. 
 
 There are several parameters you can pass to this shortode. 
-
 
 1. date 	- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes 
 			( 24 hour format instead of 12 hour ) - REQUIRED
