@@ -23,8 +23,11 @@ To use the shortcode [go_countdown date = '2013-03-01 08:00' ]
 4. Go to your post and add your shortcode. Shortcode examples follow.
 
 == Shortcode Usage ==
+
 Default shortcode usage:
 	[go_countdown date='2013-03-15 08:00'] - ( replace with the date of your upcoming event )
+
+
 There are several parameters you can pass to this shortode. 
 date 		- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes 
             		( 24 hour format instead of 12 hour ) - REQUIRED
