@@ -26,8 +26,7 @@
 *
 * PURPOSE
 * =============
-* Create a simple countdown timer utilizing a shortcode. This timer will only output the number of days until an event.
-* Additional updates must be performed to activate the other time segment
+* Create a simple countdown timer utilizing a shortcode. Will accept a timezone.  Will also accept comma delimited time elements.
 *
 *
 * SHORTCODE USAGE
