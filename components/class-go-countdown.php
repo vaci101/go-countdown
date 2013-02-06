@@ -1,5 +1,5 @@
 <?php
-/*********************************************************************************************************************\
+/***
 * LAST UPDATE
 * ============
 * January 31, 2013
@@ -8,7 +8,7 @@
 * AUTHOR
 * =============
 * Copyright 2013 Giga Omni Media (GigaOM.com)
-
+*
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
@@ -21,12 +21,13 @@
 
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
- PURPOSE
- =============
-Create a simple countdown timer utilizing a shortcode. This timer will only output the number of days until an event.
-Additional updates must be performed to activate the other time segment
+*
+*
+*
+* PURPOSE
+* =============
+* Create a simple countdown timer utilizing a shortcode. This timer will only output the number of days until an event.
+* Additional updates must be performed to activate the other time segment
 *
 *
 * SHORTCODE USAGE
@@ -42,13 +43,13 @@ Additional updates must be performed to activate the other time segment
 *					must be comma delimited if displaying multiple time elements.  If no display is entered,
 *					the default will be 'years,months,days,hours,minutes,seconds'.
 *					For Ex:  	if you only want to display the "hours" pass hours ONLY
-*								[go_countdown date='2013-03-15 08:00' timezone='American/Los_Angeles' display='hours' ]
+*									[go_countdown date='2013-03-15 08:00' timezone='American/Los_Angeles' display='hours' ]
 *							 	if you want to display the "hours and seconds", pass "hours,seconds".  So on and so on...
-									[go_countdown date='2013-03-15 08:00' timezone='American/Los_Angeles' display='hours,seconds' ]
+*									[go_countdown date='2013-03-15 08:00' timezone='American/Los_Angeles' display='hours,seconds' ]
 *
 *
 *
-\*********************************************************************************************************************/
+*/
 class GO_Countdown
 {
 	/**
@@ -58,7 +59,6 @@ class GO_Countdown
 	{
 		add_action( 'init', array( $this, 'initialize_script' ) );
 		add_shortcode( 'go_countdown', array( $this, 'shortcode' ) );
-
 	} // end __construct
 
 	public function initialize_script()
@@ -84,10 +84,9 @@ class GO_Countdown
 					'display' => 'years,months,days,hours,minutes,seconds',
 				), $atts ) );
 
-		//'format' => 'Y m d h:m:s',
-		$new_time_zone = new DateTimeZone( $timezone );
-		$target_date = new DateTime( $date, $new_time_zone );
-		$current_date_time = new DateTime( 'now', $new_time_zone );
+		$new_timezone = new DateTimeZone( $timezone );
+		$target_date = new DateTime( $date, $new_timezone );
+		$current_date_time = new DateTime( 'now', $new_timezone );
 
 		$diff = abs( $target_date->getTimestamp() - $current_date_time->getTimestamp() );
 

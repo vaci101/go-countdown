@@ -18,6 +18,7 @@
 jQuery(document).ready(function( $ )
 {
 	var countdown_time_elements = new Array( 'years', 'months', 'days', 'hours', 'minutes', 'seconds' );
+
 	try
 	{
 		time_elements = ( $( '#go_countdown_time_elements' ).val() ).split(",");
@@ -28,7 +29,7 @@ jQuery(document).ready(function( $ )
 			//determine the elements passed
 			$.each( time_elements, function( index, value )
 			{
-				if( $.inArray( value, countdown_time_elements ) > -1 )		//user passed time element.
+				if( $.inArray( value, countdown_time_elements ) > -1 ) //user passed time element.
 				{
 					wrk_array[ index ] = value;
 				}
@@ -37,8 +38,7 @@ jQuery(document).ready(function( $ )
 			//prepare to write out html based on time elements selected.
 			go_append_time_html( wrk_array );
 		}
-
-	go_countdown( wrk_array );
+		go_countdown( wrk_array );
 	}
 	catch( err )
 	{
@@ -62,7 +62,7 @@ jQuery(document).ready(function( $ )
 			switch( value )
 			{
 				case 'years':
-					wrk_years = $("<span>").addClass("years")
+					wrk_years = $("<span>").addClass("years");
 					break;
 				case 'months':
 					wrk_months = $("<span>").addClass("months");
@@ -79,9 +79,7 @@ jQuery(document).ready(function( $ )
 				case 'seconds':
 					wrk_seconds = $("<span>").addClass("seconds");
 					break;
-
-			}
-
+			}//switch( value )
 		});
 
 		$("#go-countdown").html("").append( wrk_years ).append(" " ).append( wrk_months ).append(" " ).append( wrk_days ).append(" " ).append( wrk_hours ).append(" ").append( wrk_minutes ).append(" ").append( wrk_seconds );
@@ -91,7 +89,7 @@ jQuery(document).ready(function( $ )
 	/*
 	 * Code in the method was used originally by Kerry James in a
 	 * plugin located here => URI: http://studio.bloafer.com/wordpress-plugins/countdown/
-	 * This method will calculate the time and output the time element value.
+	 * This method will calculate the time and output the time element value
 	 *
 	 */
 	function go_countdown( time_elements )
@@ -141,7 +139,7 @@ jQuery(document).ready(function( $ )
 					case 'seconds':
 						seconds = Math.floor( time_diff );
 						break;
-				}
+				}// switch( value )
 			});
 
 			if( $(".countdown-container .years").html() != years )
@@ -175,5 +173,6 @@ jQuery(document).ready(function( $ )
 			}
 			window.setTimeout( function(){ go_countdown( time_elements )}, 1000 );
 		}
+
 	}//function go_countdown( time_elements )
 });
