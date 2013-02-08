@@ -35,9 +35,6 @@
 * 	date 		- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes
 *					( 24 hour format instead of 12 hour ) - REQUIRED
 *
-*	timezone	-	need to include a time zone identifier ( i.e. America/Los_Angeles )	 - see http://www.iana.org/time-zones.
-*					If no timezone is entered, the default will be America/Los_Angeles.
-*
 *	display		-	pass the time elements you would like to display on your site. These time elements
 *					must be comma delimited if displaying multiple time elements.  If no display is entered,
 *					the default will be 'years,months,days,hours,minutes,seconds'.
@@ -79,11 +76,10 @@ class GO_Countdown
 
 		extract( shortcode_atts( array(
 					'date' => '2013-03-15 08:00',
-					'timezone' => 'America/Los_Angeles',
 					'display' => 'years,months,days,hours,minutes,seconds',
 				), $atts ) );
 
-		$new_timezone = new DateTimeZone( $timezone );
+		$new_timezone = new DateTimeZone( get_option('timezone_string') );
 		$target_date = new DateTime( $date, $new_timezone );
 		$current_date_time = new DateTime( 'now', $new_timezone );
 
