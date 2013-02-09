@@ -1,9 +1,5 @@
 <?php
 /***
-* LAST UPDATE
-* ============
-* January 31, 2013
-*
 *
 * AUTHOR
 * =============
@@ -60,7 +56,8 @@ class GO_Countdown
 	public function initialize_script()
 	{
 		//enqueue countdown timer js
-		wp_register_script('go-countdown-timer', plugins_url( dirname( plugin_basename( __FILE__ ) ) . '/js/go-countdown.js' ), array('jquery'), 4 );
+		wp_register_script('go-countdown-timer',  get_stylesheet_directory_uri() . "/../vip/gigaomevents/plugins/go-countdown/components/js/go-countdown.js", array('jquery'), 4 );
+		//wp_register_script('go-countdown-timer',  plugins_url("go-countdown/components/js/go-countdown.js"), array('jquery'), 4 );
 		wp_enqueue_script( 'go-countdown-timer');
 	}// function initialize_script()
 
@@ -72,14 +69,14 @@ class GO_Countdown
 	 */
 	public function shortcode( $atts )
 	{
-		global $go_countdown_config;
 
 		extract( shortcode_atts( array(
 					'date' => '2013-03-15 08:00',
 					'display' => 'years,months,days,hours,minutes,seconds',
+					'timezone' => "America/Los_Angeles",
 				), $atts ) );
 
-		$new_timezone = new DateTimeZone( get_option('timezone_string') );
+		$new_timezone = new DateTimeZone( $timezone );
 		$target_date = new DateTime( $date, $new_timezone );
 		$current_date_time = new DateTime( 'now', $new_timezone );
 
