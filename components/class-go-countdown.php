@@ -1,9 +1,5 @@
 <?php
 /***
-* LAST UPDATE
-* ============
-* January 31, 2013
-*
 *
 * AUTHOR
 * =============
@@ -35,9 +31,6 @@
 * 	date 		- 	'2013-03-01 08:00' - must have this value in this format.  year-month-day hour:minutes
 *					( 24 hour format instead of 12 hour ) - REQUIRED
 *
-*	timezone	-	need to include a time zone identifier ( i.e. America/Los_Angeles )	 - see http://www.iana.org/time-zones.
-*					If no timezone is entered, the default will be America/Los_Angeles.
-*
 *	display		-	pass the time elements you would like to display on your site. These time elements
 *					must be comma delimited if displaying multiple time elements.  If no display is entered,
 *					the default will be 'years,months,days,hours,minutes,seconds'.
@@ -63,7 +56,8 @@ class GO_Countdown
 	public function initialize_script()
 	{
 		//enqueue countdown timer js
-		wp_register_script('go-countdown-timer', plugins_url( dirname( plugin_basename( __FILE__ ) ) . '/js/go-countdown.js' ), array('jquery'), 4 );
+		wp_register_script('go-countdown-timer',  get_stylesheet_directory_uri() . "/../vip/gigaomevents/plugins/go-countdown/components/js/go-countdown.js", array('jquery'), 4 );
+		//wp_register_script('go-countdown-timer',  plugins_url("go-countdown/components/js/go-countdown.js"), array('jquery'), 4 );
 		wp_enqueue_script( 'go-countdown-timer');
 	}// function initialize_script()
 
@@ -75,12 +69,11 @@ class GO_Countdown
 	 */
 	public function shortcode( $atts )
 	{
-		global $go_countdown_config;
 
 		extract( shortcode_atts( array(
 					'date' => '2013-03-15 08:00',
-					'timezone' => 'America/Los_Angeles',
 					'display' => 'years,months,days,hours,minutes,seconds',
+					'timezone' => "America/Los_Angeles",
 				), $atts ) );
 
 		$new_timezone = new DateTimeZone( $timezone );
