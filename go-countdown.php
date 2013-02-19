@@ -1,3 +1,4 @@
+
 <?php
 /*
 Plugin Name: GigaOM Countdown Timer
@@ -27,6 +28,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 require __DIR__ . '/components/class-go-countdown.php';
+require __DIR__ . '/components/functions.php';
 
-global $go_countdown;
-$go_countdown = new GO_Countdown();
+go_countdown();
