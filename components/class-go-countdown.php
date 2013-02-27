@@ -104,8 +104,7 @@ function go_countdown()
 
 	if ( ! $go_countdown )
 	{
-		var_dump( "STOP");
-		$go_countdown = new GO_Countdown;
+		$go_countdown = new GO_Countdown();
 	}//end if
 
 	return $go_countdown;
