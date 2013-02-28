@@ -1,5 +1,5 @@
-
 <?php
+
 /*
 Plugin Name: GigaOM Countdown Timer
 Description: Shortcode to create a countdown timer.
@@ -28,6 +28,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 require __DIR__ . '/components/class-go-countdown.php';
-require __DIR__ . '/components/functions.php';
 
 go_countdown();
