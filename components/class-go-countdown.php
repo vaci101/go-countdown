@@ -49,18 +49,17 @@ class GO_Countdown
 	 */
 	public function __construct()
 	{
-		add_action( 'wp_enqueue_scripts', array( $this, 'initialize_script' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 		add_shortcode( 'go_countdown', array( $this, 'shortcode' ) );
 	} // end __construct
 
-	public function initialize_script()
+	public function wp_enqueue_scripts()
 	{
 		//enqueue countdown timer js
-		//wp_register_script('go-countdown-timer',  get_stylesheet_directory_uri() . "/plugins/go-countdown/components/js/go-countdown.js", array('jquery'), 4 );
-		wp_register_script('go-countdown-timer',  wpcom_vip_theme_url( '/plugins/go-countdown/components/js/go-countdown.js', 'gigaomevents' ) );
+		wp_register_script('go-countdown-timer',  plugins_url( 'js/go-countdown.js', __FILE__ ), array('jquery'), 4 );
 		wp_enqueue_script( 'go-countdown-timer');
 		
-	}// function initialize_script()
+	}// function wp_enqueue_scripts()
 
 	/**
 	 * WordPress shortcode handler.  Populate class variables with
@@ -97,7 +96,7 @@ class GO_Countdown
 }// end class
 
 /*
- * Create a singleton call of the Go_Countdown plugin.  
+ * A singleton to access the Go_Countdown plugin.  
  * */
 function go_countdown()
 {
