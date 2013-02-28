@@ -49,16 +49,17 @@ class GO_Countdown
 	 */
 	public function __construct()
 	{
-		add_action( 'init', array( $this, 'initialize_script' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'initialize_script' ) );
 		add_shortcode( 'go_countdown', array( $this, 'shortcode' ) );
 	} // end __construct
 
 	public function initialize_script()
 	{
 		//enqueue countdown timer js
-		wp_register_script('go-countdown-timer',  get_stylesheet_directory_uri() . "/plugins/go-countdown/components/js/go-countdown.js", array('jquery'), 4 );
-		//wp_register_script('go-countdown-timer',  plugins_url("go-countdown/components/js/go-countdown.js"), array('jquery'), 4 );
+		//wp_register_script('go-countdown-timer',  get_stylesheet_directory_uri() . "/plugins/go-countdown/components/js/go-countdown.js", array('jquery'), 4 );
+		wp_register_script('go-countdown-timer',  wpcom_vip_theme_url( '/plugins/go-countdown/components/js/go-countdown.js', 'gigaomevents' ) );
 		wp_enqueue_script( 'go-countdown-timer');
+		
 	}// function initialize_script()
 
 	/**
