@@ -94,7 +94,7 @@ class GO_Countdown
 
 /*
  * A singleton to access the Go_Countdown plugin.
- * */
+ */
 function go_countdown()
 {
 	global $go_countdown;
