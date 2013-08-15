@@ -58,14 +58,13 @@ class GO_Countdown
 		//enqueue countdown timer js
 		wp_register_script('go-countdown-timer',  plugins_url( 'js/go-countdown.js', __FILE__ ), array('jquery'), 4 );
 		wp_enqueue_script( 'go-countdown-timer');
-		
 	}// function wp_enqueue_scripts()
 
 	/**
-	 * WordPress shortcode handler.  Populate class variables with
-	 * attributes
-	 * @param array $atts
-	 * @return string
+	 * WordPress shortcode handler.  Populate class variables with attributes
+	 *
+	 * @param $atts array of attributes
+	 * @return string of attributes to populate variables
 	 */
 	public function shortcode( $atts )
 	{
@@ -90,13 +89,11 @@ class GO_Countdown
 
 		//output timer
 		return '<div id="go-countdown" class="countdown-container">' .  date('l jS \of F Y h:i:s A', $target_date->getTimestamp() ) . '</div>';
-
-
 	} // end shortcode
 }// end class
 
 /*
- * A singleton to access the Go_Countdown plugin.  
+ * A singleton to access the Go_Countdown plugin.
  * */
 function go_countdown()
 {
