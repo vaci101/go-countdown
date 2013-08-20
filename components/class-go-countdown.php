@@ -53,6 +53,9 @@ class GO_Countdown
 		add_shortcode( 'go_countdown', array( $this, 'shortcode' ) );
 	} // end __construct
 
+	/**
+	 * enqueues scripts to run
+	 */
 	public function wp_enqueue_scripts()
 	{
 		//enqueue countdown timer js
